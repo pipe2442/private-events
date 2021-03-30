@@ -1,0 +1,18 @@
+<h1 class="d-flex justify-content-center">New Event page</h1>
+
+<%= form_for @event do |f| %>
+  <div class="field d-flex justify-content-center mt-3"><%= f.label :title %><br></div>
+  <div class="field d-flex justify-content-center"><%= f.text_field :title %></div> 
+    
+  <div class="field d-flex justify-content-center mt-3"><%= f.label :description %><br></div>
+  <div class="field d-flex justify-content-center"><%= f.text_area :description %></div>
+
+  <div class="field d-flex justify-content-center mt-3"><%= f.label :date %><br></div>
+  <div class="field d-flex justify-content-center"><%= f.date_select :date %></div>  
+
+
+  <div class="field d-flex justify-content-center mt-3"><%= f.label :place %><br></div>
+  <div class="field d-flex justify-content-center"><%= f.text_field :place %></div> 
+
+  <div class="field d-flex justify-content-center mt-5"><%= f.submit %></div>
+<% end %>
