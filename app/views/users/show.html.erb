@@ -3,7 +3,7 @@
 <div>
     <% @user.events.each do |event| %>
         <div class="my-5">
-            <h3 class="field d-flex justify-content-center"><%= event.title %></h3>
+            <h3 class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></h3>
         </div>
     <% end %>
 </div>
