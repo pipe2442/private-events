@@ -1,11 +1,9 @@
-<div class="field"><%= @user.name %></div>
+<h1 class="d-flex justify-content-center my-5"><%= @user.name %> Events:</h1>
 
-<section class="d-flex justify-content-center">
-    <div>
-        <% @user.events.each do |event| %>
-            <div class="my-5">
-                <div class="field d-flex justify-content-center"><%= event.title %></div>
-            </div>
-        <% end %>
-    </div>
-</section>
+<div>
+    <% @user.events.each do |event| %>
+        <div class="my-5">
+            <h3 class="field d-flex justify-content-center"><%= event.title %></h3>
+        </div>
+    <% end %>
+</div>
