@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+
   resources :users
-  resources :events
   resources :sessions
+
+  resources :events 
+
+  put 'event/:id/invitation', to: 'events#invitation', as: 'invitation'
+
 
   # Session Routes
   get 'signup', to: 'users#new', as: 'signup'
