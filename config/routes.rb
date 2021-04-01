@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root "events#index"
+  # resources :events do
+  #   resource :attendance 
+  # end
   resources :users
   resources :sessions
   resources :events
