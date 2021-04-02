@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   
   root "events#index"
 
+  # Attendances
+  post 'new/attendance', "attendance#new"
+
 end

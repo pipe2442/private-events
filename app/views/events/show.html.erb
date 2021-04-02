@@ -9,3 +9,11 @@
 <div class="field d-flex justify-content-center"><%= @event.place %></div>
 <h3 class="d-flex justify-content-center">Creator:</h3>
 <div class="field d-flex justify-content-center"><%= @event.creator[:name]%></div>
+<h1 class="d-flex justify-content-center">Invite people</h1>
+
+<%= form_for @attendance do |f| %>
+  <div class="field d-flex justify-content-center mt-3"><%= f.label :attendee_id %><br></div>
+  <div class="field d-flex justify-content-center"><%= f.text_field :attendee_id %></div>  
+
+  <div class="field d-flex justify-content-center mt-5"><%= f.submit %></div>
+<% end %>
