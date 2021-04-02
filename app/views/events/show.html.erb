@@ -1,13 +1,38 @@
-<h1>Show an specific event</h1>
+<h1 class="d-flex justify-content-center my-5">Event Details</h1>
+<h3 class="d-flex justify-content-center">Title:</h3>
+<div class="field d-flex justify-content-center"><%= @event.title %></div>
+<h3 class="d-flex justify-content-center">Description:</h3>
+<div class="field d-flex justify-content-center description"><%= @event.description %></div>
+<h3 class="d-flex justify-content-center">Date:</h3>
+<div class="field d-flex justify-content-center"><%= @event.date %></div>
+<h3 class="d-flex justify-content-center">Place:</h3>
+<div class="field d-flex justify-content-center"><%= @event.place %></div>
+<h3 class="d-flex justify-content-center">Creator:</h3>
+<div class="field d-flex justify-content-center"><%= @event.creator[:name]%></div>
+<section class="d-flex justify-content-center">
+    <div>
+        <h1 class="mt-5 mb-3">invited list</h1>
+        <% @event.attendees.each do |user| %>
+            <div class="my-3">
+                <div class="field d-flex justify-content-center"><%= user.name %></div>
+                <div class="field d-flex justify-content-center"><%= user.email %></div>
+            </div>
+        <% end %>
+        
+    </div>
+</section>
 
-<h1>Event Details</h1>
-<h3>Title:</h3>
-<div class="field"><%= @event.title %></div>
-<h3>Description:</h3>
-<div class="field"><%= @event.description %></div>
-<h3>Date:</h3>
-<div class="field"><%= @event.date %></div>
-<h3>Place:</h3>
-<div class="field"><%= @event.place %></div>
-<h3>Creator:</h3>
-<div class="field"><%= @event.creator[:name]%></div>
+
+<section class="d-flex justify-content-center">
+    <div>
+        <h1 class="mt-5 mb-3">Send your invitations:</h1>
+        <% @users.each do |user| %>
+            <div class="my-3">
+                <div class="field d-flex justify-content-center"><%= user.name %></div>
+                <div class="field d-flex justify-content-center"><%= user.email %></div>
+                <%= button_to "invitation",  invitation_path(@event), method: "put"%>
+            </div>
+        <% end %>
+        
+    </div>
+</section>
