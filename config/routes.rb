@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :events 
+  resources :attendances
 
   put 'event/:id/invitation', to: 'events#invitation', as: 'invitation'
 
