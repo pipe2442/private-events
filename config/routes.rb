@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'attendances/new'
+  get 'attendances/create'
+  get 'attendance/new'
+  get 'attendance/create'
   get 'events/index'
   get 'events/show'
   get 'events/new'
