@@ -2,4 +2,12 @@
 
 <%= form_for @attendance do |f| %>
 
+    <div class="field d-flex justify-content-center mt-3"><%= f.collection_select :event_id, Event.all, :id, :title %> </div>  
+
+     <div class="field d-flex justify-content-center mt-3"><%= f.collection_select :attendee_id, User.all, :id, :name %> </div>  
+
+
+
+
+    <div class="field d-flex justify-content-center mt-5"><%= f.submit %></div>
 <% end %>

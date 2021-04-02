@@ -2,17 +2,24 @@ class AttendancesController < ApplicationController
 
 
   def new
-    @event = Event.find(params[:id])
-    @attendance = @event.Attendances.build
+    @events = Event.all
+    #@event = Event.find(params[:id])
+    @attendance = Attendance.new
   end
 
   def create
-    @event = Event.find(params[:id])
-    @attendance = @event.Attendances.build(attendance_params)
+    @events = Event.all
+    #@event = Event.find(params[:id])
+    @attendance = Attendance.new(attendance_params)
+    if @attendance.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
     def attendance_params
-        params.require(:attendance).permit(:email)
+        params.require(:attendance).permit(:event_id, :attendee_id)
     end
 end
