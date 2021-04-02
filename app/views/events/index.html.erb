@@ -5,8 +5,7 @@
     <div>
         <% @events.each do |event| %>
             <div class="my-5">
-                <div class="field d-flex justify-content-center"><%= event.title %></div>
-                <div class="field d-flex justify-content-center"><%= event.description %></div>
+            <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
                 <div class="field d-flex justify-content-center"><%= event.date %></div>
                 <div class="field d-flex justify-content-center"><%= event.place %></div>
             </div>
