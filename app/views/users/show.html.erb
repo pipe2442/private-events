@@ -6,7 +6,7 @@
     <div>
         <% @user.events.each do |event| %>
             <div class="my-3">
-                <div class="field d-flex justify-content-center"><%= event.title %></div>
+                <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
             </div>
         <% end %>
     </div>
@@ -19,7 +19,7 @@
         <% @attendances.each do |attendance| %>
             <% if attendance.attendee.id == @user.id && attendance.event.date < Date.today%>
             <div class="my-3">
-                <div class="field d-flex justify-content-center"><%= attendance.event.title %></div>
+                <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
             </div>
             <% end %>
         <% end %>
@@ -33,7 +33,7 @@
         <% @attendances.each do |attendance| %>
             <% if attendance.attendee.id == @user.id && attendance.event.date > Date.today%>
             <div class="my-3">
-                <div class="field d-flex justify-content-center"><%= attendance.event.title %></div>
+                <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
             </div>
             <% end %>
         <% end %>
