@@ -12,6 +12,20 @@
     </div>
 </section>
 
+<h3 class="d-flex justify-content-center">Previously Attended Events:</h3>
+
+<section class="d-flex justify-content-center">
+    <div>
+        <% @attendances.each do |attendance| %>
+            <% if attendance.attendee.id == @user.id && attendance.event.date < Date.today%>
+            <div class="my-3">
+                <div class="field d-flex justify-content-center"><%= attendance.event.title %></div>
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+</section>
+
 <h3 class="d-flex justify-content-center">Upcoming Events:</h3>
 
 <section class="d-flex justify-content-center">
