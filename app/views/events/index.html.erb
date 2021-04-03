@@ -2,14 +2,35 @@
 <h4 class="d-flex justify-content-center"><%= link_to "Create a new event.", new_event_path %></h4>
 <h4 class="d-flex justify-content-center"><%= link_to "Assist to a event", new_attendance_path %></h4>
 
+
+<h3 class="d-flex justify-content-center mt-5">Past Events</h3>
+
 <section class="d-flex justify-content-center">
     <div>
         <% @events.each do |event| %>
-            <div class="my-5">
+            <% if event.date < Date.today%>
+            <div class="my-2">
             <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
                 <div class="field d-flex justify-content-center"><%= event.date %></div>
                 <div class="field d-flex justify-content-center"><%= event.place %></div>
             </div>
+            <% end %>
+        <% end %>
+    </div>
+</section>
+
+<h3 class="d-flex justify-content-center mt-2">Upcoming Events</h3>
+
+<section class="d-flex justify-content-center">
+    <div>
+        <% @events.each do |event| %>
+            <% if event.date > Date.today%>
+            <div class="my-2">
+            <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
+                <div class="field d-flex justify-content-center"><%= event.date %></div>
+                <div class="field d-flex justify-content-center"><%= event.place %></div>
+            </div>
+            <% end %>
         <% end %>
     </div>
 </section>
