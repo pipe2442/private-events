@@ -6,22 +6,28 @@
 <h3 class="d-flex justify-content-center mt-5">Past Events</h3>
 
 <section class="d-flex justify-content-center">
-    <div>
-        <% @events.each do |event| %>
-            <% if event.date < Date.today%>
-            <div class="my-2">
-            <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
-                <div class="field d-flex justify-content-center"><%= event.date %></div>
-                <div class="field d-flex justify-content-center"><%= event.place %></div>
-            </div>
+   
+    <% if @events.count >=1%>
+        <div>
+            <% @events.each do |event| %>
+                <% if event.date < Date.today%>
+                <div class="my-2">
+                <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
+                    <div class="field d-flex justify-content-center"><%= event.date %></div>
+                    <div class="field d-flex justify-content-center"><%= event.place %></div>
+                </div>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% else %>
+        <h3>There are no past events to display</h3>
+    <% end %>
 </section>
 
 <h3 class="d-flex justify-content-center mt-2">Upcoming Events</h3>
 
 <section class="d-flex justify-content-center">
+    <% if @events.count >=1 %>
     <div>
         <% @events.each do |event| %>
             <% if event.date > Date.today%>
@@ -33,4 +39,7 @@
             <% end %>
         <% end %>
     </div>
+    <% else %>
+        <h3>There are no upcoming events to display</h3>
+    <% end %>
 </section>

@@ -1,8 +1,9 @@
 <h1 class="d-flex justify-content-center mb-5"><%= @user.name %> Profile</h1>
 
-<h3 class="d-flex justify-content-center">Created Events</h3>
+<h2 class="d-flex justify-content-center">Created Events</h2>
 
 <section class="d-flex justify-content-center">
+    <% if @user.events.count >=1 %>
     <div>
         <% @user.events.each do |event| %>
             <div class="my-3">
@@ -10,11 +11,15 @@
             </div>
         <% end %>
     </div>
+    <% else %>
+        <h3>There are no created events</h3>
+    <% end %>
 </section>
 
-<h3 class="d-flex justify-content-center">Previously Attended Events:</h3>
+<h2 class="d-flex justify-content-center mt-4">Previously Attended Events:</h2>
 
 <section class="d-flex justify-content-center">
+    <% if @attendances.count >= 1 %>   
     <div>
         <% @attendances.each do |attendance| %>
             <% if attendance.attendee.id == @user.id && attendance.event.date < Date.today%>
@@ -24,18 +29,25 @@
             <% end %>
         <% end %>
     </div>
+    <% else %>
+        <h3><%= @user.name%> has not attended yet to any event</h3>
+    <% end %>
 </section>
 
-<h3 class="d-flex justify-content-center">Upcoming Events With <%= @user.name %> Assistance:</h3>
+<h2 class="d-flex justify-content-center mt-4">Upcoming Events With <%= @user.name %> Assistance:</h2>
 
 <section class="d-flex justify-content-center">
     <div>
+        <% if @attendances.count >= 1 %> 
         <% @attendances.each do |attendance| %>
             <% if attendance.attendee.id == @user.id && attendance.event.date > Date.today%>
             <div class="my-3">
                 <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
             </div>
             <% end %>
+        <% end %>
+        <% else %>
+            <h3><%= @user.name %> is not assisting yet to any event</h3>
         <% end %>
     </div>
 </section>

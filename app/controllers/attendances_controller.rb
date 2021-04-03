@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-
+  before_action :authorize, only: [:new, :edit, :update]
 
   def new
     @events = Event.all
