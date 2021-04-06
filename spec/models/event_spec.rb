@@ -23,7 +23,7 @@ RSpec.describe Event, type: :model do
   end
 
   context 'Association tests' do
-    it { should belong_to(:creator) }
+    it { should belong_to(:creator).class_name('User') }
     it { should have_many(:invitations) }
     it { should have_many(:attendees) }
   end
