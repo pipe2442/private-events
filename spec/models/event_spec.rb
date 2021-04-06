@@ -1,6 +1,4 @@
 require 'rails_helper'
-# require 'spec_helper'
-# require 'capybara/rspec'
 
 RSpec.describe Event, type: :model do
   context 'Association' do
