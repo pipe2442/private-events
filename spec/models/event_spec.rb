@@ -1,8 +1,13 @@
 require 'rails_helper'
-require 'spec_helper'
-require 'capybara/rspec'
+# require 'spec_helper'
+# require 'capybara/rspec'
 
 RSpec.describe Event, type: :model do
+  context 'Association' do
+    it { should belong_to(:creator).class_name('User') }
+    it { should have_many(:attendances) }
+    it { should have_many(:attendees) }
+  end
   context 'validation tests' do
     it "Shouldn't save if there's no date" do
       e = Event.new(creator_id: 1, description: 'Event 1')
@@ -20,11 +25,5 @@ RSpec.describe Event, type: :model do
       e = Event.new(creator_id: "xyz", date: '2020-07-20', description: text)
       expect(e.save).to_not eq(true)
     end
-  end
-
-  context 'Association tests' do
-    it { should belong_to(:creator).class_name('User') }
-    it { should have_many(:invitations) }
-    it { should have_many(:attendees) }
   end
 end
