@@ -17,7 +17,7 @@
 
 <section class="d-flex justify-content-center">
     <div>
-        <% if @event.attendees.count >= 1 %>
+        <% if @event.attendees.exists? %>
         <% @event.attendees.each do |attendee| %>
             <div class="my-3">
                 <div class="field d-flex justify-content-center"><%= attendee.name %></div>
