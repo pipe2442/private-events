@@ -9,16 +9,16 @@ RSpec.describe Event, type: :model do
       expect(e.save).to eq(false)
     end
 
-    it "Shouldn't save if the description is more than 300 characters" do
-      bigstr = 'Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247Event 1247Event
-               1247Event 1247Event 1247Event 1247Event 1247'
-      e = Event.new(creator_id: 1, date: '2020-05-20', description: bigstr)
+    it "Shouldn't save if not creator specified" do
+      text = "This event doesn't contain creator id, it's not correct"
+      e = Event.new(date: '2021-03-20', description: text)
       expect(e.save).to eq(false)
+    end
+
+    it "Shouldn't save if the creator_id is incorrect" do
+      text = "This event contains bad creator id, it's not correct"
+      e = Event.new(creator_id: "xyz", date: '2020-07-20', description: text)
+      expect(e.save).to_not eq(true)
     end
   end
 
