@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @attendances = Attendance.all
+    @events = Event.all
   end
 
   def create

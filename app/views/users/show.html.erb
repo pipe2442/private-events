@@ -3,7 +3,7 @@
 <h2 class="d-flex justify-content-center">Created Events</h2>
 
 <section class="d-flex justify-content-center">
-    <% if @user.events.count >=1 %>
+    <% if @user.events.exists? %>
     <div>
         <% @user.events.each do |event| %>
             <div class="my-3">
@@ -19,13 +19,13 @@
 <h2 class="d-flex justify-content-center mt-4">Previously Attended Events:</h2>
 
 <section class="d-flex justify-content-center">
-    <% if @attendances.count >= 1 %>   
+    <% if @attendances.exists? %>   
     <div>
-        <% @attendances.each do |attendance| %>
-            <% if attendance.attendee.id == @user.id && attendance.event.date < Date.today%>
-            <div class="my-3">
-                <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
-            </div>
+        <% @attendances.each do |attendance| %>    
+            <% if attendance.event.date < Date.today %>
+                <div class="my-3">
+                    <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
+                </div>
             <% end %>
         <% end %>
     </div>
@@ -37,17 +37,17 @@
 <h2 class="d-flex justify-content-center mt-4">Upcoming Events With <%= @user.name %> Assistance:</h2>
 
 <section class="d-flex justify-content-center">
+    <% if @attendances.exists? %>   
     <div>
-        <% if @attendances.count >= 1 %> 
-        <% @attendances.each do |attendance| %>
-            <% if attendance.attendee.id == @user.id && attendance.event.date > Date.today%>
-            <div class="my-3">
-                <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
-            </div>
+        <% @attendances.each do |attendance| %>    
+            <% if attendance.event.date > Date.today %>
+                <div class="my-3">
+                    <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
+                </div>
             <% end %>
         <% end %>
-        <% else %>
-            <h3><%= @user.name %> is not assisting yet to any event</h3>
-        <% end %>
     </div>
+    <% else %>
+        <h3><%= @user.name%> has not attended yet to any event</h3>
+    <% end %>
 </section>

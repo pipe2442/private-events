@@ -7,7 +7,7 @@
 
 <section class="d-flex justify-content-center">
    
-    <% if @events.past_events.exists?%>
+    <% if @events.past_events.exists? %>
         <div>
             <% @events.past_events.each do |event| %>
                 <div class="my-2">
@@ -25,10 +25,10 @@
 <h3 class="d-flex justify-content-center mt-2">Upcoming Events</h3>
 
 <section class="d-flex justify-content-center">
-    <% if @events.future_events.exists?%>
+    <% if @events.future_events.exists? %>
     <div>
         <% @events.future_events.each do |event| %>
-            <% if event.date > Date.today%>
+            <% if event.date >= Date.today%>
             <div class="my-2">
             <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
                 <div class="field d-flex justify-content-center"><%= event.date %></div>
