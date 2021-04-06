@@ -61,4 +61,3 @@ Contributions, issues and feature requests are welcome!
 - Github: [@pacyL2K19](https://github.com/pacyL2K19)
 - Twitter: [@PacifiqueLinja1](https://twitter.com/PacifiqueLinja1)
 - Linkedin: [Pacifique Linjanja](https://www.linkedin.com/in/pacifique-linjanja/)
-

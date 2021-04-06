@@ -20,7 +20,7 @@ RSpec.describe Event, type: :model do
 
     it "Shouldn't save if the creator_id is incorrect" do
       text = "This event contains bad creator id, it's not correct"
-      e = Event.new(creator_id: "xyz", date: '2020-07-20', description: text)
+      e = Event.new(creator_id: 'xyz', date: '2020-07-20', description: text)
       expect(e.save).to_not eq(true)
     end
   end
