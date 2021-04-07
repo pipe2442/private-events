@@ -1,0 +1,45 @@
+<h1 class="d-flex justify-content-center">Events List</h1>
+<h4 class="d-flex justify-content-center"><%= link_to "Create a new event.", new_event_path %></h4>
+
+<% if @events.exists? %>
+    <h4 class="d-flex justify-content-center"><%= link_to "Assist to a event", new_attendance_path %></h4>
+<% end %>
+    
+<h3 class="d-flex justify-content-center mt-5">Past Events</h3>
+
+<section class="d-flex justify-content-center">
+   
+    <% if @events.past_events.exists? %>
+        <div>
+            <% @events.past_events.each do |event| %>
+                <div class="my-2">
+                <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
+                    <div class="field d-flex justify-content-center"><%= event.date %></div>
+                    <div class="field d-flex justify-content-center"><%= event.place %></div>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h3>There are no past events to display</h3>
+    <% end %>
+</section>
+
+<h3 class="d-flex justify-content-center mt-2">Upcoming Events</h3>
+
+<section class="d-flex justify-content-center">
+    <% if @events.future_events.exists? %>
+    <div>
+        <% @events.future_events.each do |event| %>
+            <% if event.date >= Date.today%>
+            <div class="my-2">
+            <div class="field d-flex justify-content-center"><%= link_to event.title, event_path(event) %></div>
+                <div class="field d-flex justify-content-center"><%= event.date %></div>
+                <div class="field d-flex justify-content-center"><%= event.place %></div>
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+    <% else %>
+        <h3>There are no upcoming events to display</h3>
+    <% end %>
+</section>

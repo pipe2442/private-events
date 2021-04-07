@@ -1,0 +1,31 @@
+<h1 class="d-flex justify-content-center my-5">Event Details</h1>
+<h3 class="d-flex justify-content-center">Title:</h3>
+<div class="field d-flex justify-content-center"><%= @event.title %></div>
+<h3 class="d-flex justify-content-center">Description:</h3>
+<div class="field d-flex justify-content-center description"><%= @event.description %></div>
+<h3 class="d-flex justify-content-center">Date:</h3>
+<div class="field d-flex justify-content-center"><%= @event.date %></div>
+<h3 class="d-flex justify-content-center">Place:</h3>
+<div class="field d-flex justify-content-center"><%= @event.place %></div>
+<h3 class="d-flex justify-content-center">Creator:</h3>
+<div class="field d-flex justify-content-center"><%= @event.creator[:name]%></div>
+
+
+ 
+<h1 class="d-flex justify-content-center mt-4">Event Attendees</h1>
+
+
+<section class="d-flex justify-content-center">
+    <div>
+        <% if @event.attendees.exists? %>
+        <% @event.attendees.each do |attendee| %>
+            <div class="my-3">
+                <div class="field d-flex justify-content-center"><%= attendee.name %></div>
+                <div class="field d-flex justify-content-center"><%= attendee.email %></div>
+            </div>
+        <% end %>
+        <% else %>
+            <h3>This event has no attendees</h3>
+        <% end %>
+    </div>
+</section>
