@@ -8,7 +8,8 @@ class AttendancesController < ApplicationController
 
   def create
     @events = Event.all
-    @attendance = Attendance.new(attendance_params)
+    @user = current_user
+    @attendance = @user.attendances.new(attendance_params)
     if @attendance.save
       redirect_to root_path
     else
@@ -19,6 +20,6 @@ class AttendancesController < ApplicationController
   private
 
   def attendance_params
-    params.require(:attendance).permit(:event_id, :attendee_id)
+    params.require(:attendance).permit(:event_id)
   end
 end
