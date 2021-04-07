@@ -2,7 +2,7 @@
 
 <%= form_for @attendance do |f| %>
     <h3 class="field d-flex justify-content-center mt-3">Select The Event:</h3>  
-    <div class="field d-flex justify-content-center mt-3"><%= f.collection_select :event_id, Event.future_events.all, :id, :title %> </div>  
+    <div class="field d-flex justify-content-center mt-3"><%= f.collection_select :event_id, Event.all, :id, :title %> </div>  
     <h3 class="field d-flex justify-content-center mt-3">Select Your Name:</h3> 
     <div class="field d-flex justify-content-center mt-3"><%= f.collection_select :attendee_id, User.where(id: @current_user.id), :id, :name %> </div>  
     <div class="field d-flex justify-content-center mt-5"><%= f.submit %></div>

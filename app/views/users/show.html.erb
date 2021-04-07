@@ -19,9 +19,9 @@
 <h2 class="d-flex justify-content-center mt-4">Previously Attended Events:</h2>
 
 <section class="d-flex justify-content-center">
-    <% if @attendances.exists? %>   
+    <% if @attendances.where(event_id: Event.past_events).exists? %>   
     <div>
-        <% @attendances.where(attendee_id: current_user.id).each do |attendance| %>    
+        <% @attendances.where(attendee_id: current_user).each do |attendance| %>    
             <% if attendance.event.date < Date.today %>
                 <div class="my-3">
                     <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
@@ -37,9 +37,9 @@
 <h2 class="d-flex justify-content-center mt-4">Upcoming Events With <%= @user.name %> Assistance:</h2>
 
 <section class="d-flex justify-content-center">
-    <% if @attendances.exists? %>   
+    <% if @attendances.where(event_id: Event.future_events).exists? %>   
     <div>
-        <% @attendances.where(attendee_id: current_user.id).each do |attendance| %>    
+        <% @attendances.where(attendee_id: current_user).each do |attendance| %>    
             <% if attendance.event.date > Date.today %>
                 <div class="my-3">
                     <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
