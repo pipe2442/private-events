@@ -21,7 +21,7 @@
 <section class="d-flex justify-content-center">
     <% if @attendances.exists? %>   
     <div>
-        <% @attendances.each do |attendance| %>    
+        <% @attendances.where(attendee_id: current_user.id).each do |attendance| %>    
             <% if attendance.event.date < Date.today %>
                 <div class="my-3">
                     <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
@@ -39,7 +39,7 @@
 <section class="d-flex justify-content-center">
     <% if @attendances.exists? %>   
     <div>
-        <% @attendances.each do |attendance| %>    
+        <% @attendances.where(attendee_id: current_user.id).each do |attendance| %>    
             <% if attendance.event.date > Date.today %>
                 <div class="my-3">
                     <div class="field d-flex justify-content-center"><%= link_to attendance.event.title, event_path(attendance.event) %></div>
